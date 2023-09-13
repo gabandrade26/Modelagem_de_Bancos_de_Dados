@@ -10,4 +10,22 @@ Comandos do MySQL:
 - describe professor; ou desc professor; - mostra as colunas
 - a coluna que tem a chave primária sempre vai ter que ser obrigatória
 - os programadores normamelte copia os códigos feitos no MySQL e salva no git o bloco de notas com os comandos
+- drop database exemplo_senai; - apaga o banco de dados
+- unique - deixa a coluna com valores unicos
+- insert into aluno values (3001,'Godofredo Henrique', '2000-03-15', '123.456.789-01', 'Godojane Maia', 'godhen@email.com'); - inseri as informações na coluna
+- select * from aluno; - mostra as informações que forma inseridas
 
+
+Histórico do MySQL:
+senha: alunolab
+mysql> show databases;
+mysql> use exemplo_senai;
+mysql> status;
+mysql> show databases;
+mysql> use mysql;
+mysql> status;
+mysql> show tables;
+mysql> desc db;
+mysql> show databases;
+drop database exemplo_senai;
+mysql> show databases;
