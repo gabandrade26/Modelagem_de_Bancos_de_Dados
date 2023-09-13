@@ -1,0 +1,9 @@
+Banco de Dados Escola:
+
+mysql> create database escola;
+mysql> show databases;
+mysql> use escola;
+mysql> status;
+mysql> create table Aluno ( matricula int primary key auto_increment, nome varchar(80) not null, nascimento date, cpf char(14) not null unique, responsavel varchar(80) not null, email varchar(80) unique);
+mysql> show tables;
+mysql> desc aluno;

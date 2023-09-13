@@ -1,0 +1,13 @@
+Para baixar em casa para MySQL: XAMPP
+Senha do MySQL: alunolab
+Comandos do MySQL:
+- show databases; - mostra os banco de dados do Computador
+- use mysql; - se aparacer "Database changed" vc está no banco de dados escolhido
+- status; - vai mostrar onde você está
+- create database exemplo_senai; - cria o banco de dados
+- show tables; - mostra se o seu banco de dados tem tabelas
+- create table Professor (matricula int primary key auto_increment, nome varchar(80) not null, formacao varchar(30)); - cria uma tabela, dentro do paratenses as colunas com seus tipos, primary key - indetificador, auto_increment - o programa vai incrementar automáticamente, not null - deixa a coluna obrigatória
+- describe professor; ou desc professor; - mostra as colunas
+- a coluna que tem a chave primária sempre vai ter que ser obrigatória
+- os programadores normamelte copia os códigos feitos no MySQL e salva no git o bloco de notas com os comandos
+
