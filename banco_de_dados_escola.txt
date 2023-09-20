@@ -89,3 +89,46 @@ mysql> select * from leciona;
 mysql> insert into leciona values (201, 12, 21);
 mysql> insert into leciona values (null, 11, 22);
 mysql> insert into leciona values (null, '13', '23');
+
+Dia 20/09:
+mysql> show databases
+    -> ;
+mysql> use escola;
+mysql> status;
+mysql> desc disciplina;
+mysql> insert into disciplina values (null, 'Lógica de Programação');
+mysql> insert into professor values (null, 'Jefferson Brandão', 'TI');
+mysql> desc possui;
+mysql> select * from disciplina
+    -> ;
+mysql> select * from turma
+    -> ;
+mysql> insert into possui values (null, 14, 1)
+    -> ;
+mysql> select * from professor;
+mysql> desc leciona;
+mysql> insert into leciona values (null, 14, 206)
+    -> ;
+mysql> update professor set nome = 'Vicente Orsino' where matricula = 22;
+mysql> select * from aluno;
+mysql> update aluno set nascimento = '2007-04-11' where matricula = 3006;
+mysql> update aluno set nascimento = '2000-03-15' where matricula = 3005;
+mysql> alter table professor add email varchar(30) unique after nome;
+mysql> select * from professor;
+mysql> update professor set email = 'sg@email.com' where matricula = 21;
+mysql> update professor set email = 'vo@email.com' where matricula = 22;
+mysql> update professor set email = 'fl@email.com' where matricula = 23;
+mysql> update professor set email = 'jb@email.com' where matricula = 206;
+mysql> select * from turma;
+mysql> insert into turma values (20223100, 'M', 'Técnico em Comunicação Visual');
+mysql> select * from disciplina;
+mysql> select * from possui;
+mysql> select * from turma;
+mysql> insert into possui values (null, 13, 20223100);
+mysql> select * from possui;
+mysql> desc aluno;
+mysql> insert into aluno values (null, 'Judite Presley', '1995-07-08', '123.456.789-09', 'Pedro Presley', 'jp@email.com');
+mysql> desc estuda;
+mysql> insert into estuda values (null, 3007, 2);
+mysql> desc disciplina;
+mysql> update disciplina set nome = 'Programação Python' where cod_disciplina = 11;
