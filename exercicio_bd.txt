@@ -1,38 +1,70 @@
 Exercício de Banco de Dados
 
 1 - Exibir nome e e-mail de todos os alunos que possuem e-mail;
-	select nome, email from aluno where email is not null;
+	select nome, email from aluno where email is not null; (ok)
+
+select nome as 'Aluno:', email as 'E-mail:' from aluno where email is not null;
 2 - Exibir, om ordem alfabética, todos os nomes de professores de TI;
-	select * from professor where formacao = 'TI' order by nome;
+	select * from professor where formacao = 'TI' order by nome; (ok)
+
 3 - Exibir todos os alunos com matricula entre 3004 e 3008;
-	select * from aluno where matricula between 3004 and 3008;
+	select * from aluno where matricula between 3004 and 3008; (ok)
+
 4 - Exibir todos os números de turmas de TI;
 	select * from turma where definicao = 'Técnico em Informática';
+
+correto:  select numero from turma where definicao = 'Técnico em Informática';
+
 5 - Exibir todas as disciplinas de turmas de TI;
 	select turma.definicao, disciplina.nome from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and definicao = 'Técnico em Informática';
+
+correto: select disciplina.nome from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and definicao = 'Técnico em Informática';
+
 6 - Exibir a contagem de turmas de TI (quantas turmas de TI existem);
-	select count(definicao) from turma where definicao = 'Técnico em Informática';
+	select count(definicao) from turma where definicao = 'Técnico em Informática'; (ok)
+
+select count(definicao) as 'Total Turmas de TI' from turma where definicao = 'Técnico em Informática';
+
 7 - Exibir todos os alunos que nasceram em 2000;
-	select * from aluno where year(nascimento) = 2000;
+	select * from aluno where year(nascimento) = 2000; (ok)
+
 8 - Exibir nome e nascimento de todos os alunos que nasceram em Setembro;
-	select nome, nascimento from aluno where month(nascimento) = 09;
+	select nome, nascimento from aluno where month(nascimento) = 09; (ok)
+
 9 - Exibir nome e cpf de todos os alunos que estudam de manhã;
 	select aluno.nome, aluno.cpf, turma.turno from aluno, estuda, turma where aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_numero = turma.numero and turno = 'M';
+
+correto: select aluno.nome, aluno.cpf from aluno, estuda, turma where aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_numero = turma.numero and turno = 'M';
+
 10 - Exibir todas as disciplinas das turmas da tarde;
 	select turma.turno, disciplina.nome from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and turno = 'T';
+
+correta: select disciplina.* from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and turno = 'T';
+
 11 - Exibir nomes de todos os professores que atuam em turmas de TI;
 	select turma.definicao, professor.nome, professor.formacao from turma, possui, disciplina, leciona, professor where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and definicao = 'Técnico em Informática';
+
+correto: select professor.nome from turma, possui, disciplina, leciona, professor where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and definicao = 'Técnico em Informática';
+
 12 - Exibir o nome de todos os alunos do Professor Vicente;
 	select turma.definicao, professor.nome, professor.formacao, aluno.nome from turma, possui, disciplina, leciona, professor, aluno, estuda where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_numero = turma.numero and professor.nome = 'Vicente Orsino';
+
+correto: select aluno.nome from turma, possui, disciplina, leciona, professor, aluno, estuda where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_numero = turma.numero and professor.nome = 'Vicente Orsino';
+
 13 - Exibir matrícula e nome de todos os alunos que possuem a disciplina de Lógica de Programação;
 	select aluno.matricula, aluno.nome, disciplina.nome from aluno, estuda, turma, possui, disciplina where aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_numero = turma.numero and turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.nome = 'Lógica de Programação';
+
 14 - Exibir o nome de todos os professores que dão aula nas turmas da tarde, em ordem alfabética;
 	select professor.nome, turma.turno from turma, possui, disciplina, leciona, professor where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and turno = 'T' order by nome;
+
 15 - Exibir o nome de todos os professores que possuem pelo menos 1 dependente e dão nas turmas de TI;
 	select professor.nome, turma.turno, professor.dependentes, turma.definicao from turma, possui, disciplina, leciona, professor where turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_displina = disciplina.cod_disciplina and disciplina.cod_disciplina = leciona.fk_disciplina_cod_disciplina and leciona.fk_professor_matricula = professor.matricula and dependentes >= 1 and definicao = 'Técnico em Informática';
+
 16 - Exibir o nome de todas as disciplinas que possuem a palavra Programação;
 	select nome from disciplina where nome like '%Programação%';
+
 17 - Exibir nome e email dos professores com as matriculas 22 e 206
 	select nome, email from professor where matricula in (22, 206);
+
 18 - exibir nomes de professores e suas formações da seguinte forma: "Professor: nome - Formação: formação"
 	select concat('Professor:', nome, '-Formação:', formacao) from professor;
